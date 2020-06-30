@@ -1,0 +1,17 @@
+.mat-card {
+  flex-basis: 20%;
+  margin: 10px;
+  align-items: center;
+  text-align: center;
+  min-height: 210px;
+  &:hover {
+    @media (min-width: 991px) {
+      transform: scale(1.1);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+
+mat-card-content {
+  margin-top: auto;
+}

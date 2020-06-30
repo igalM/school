@@ -1,0 +1,21 @@
+.index-page {
+  height: 100%;
+  .content-container {
+    max-width: 400px;
+    margin: 10px;
+    align-self: center;
+    padding-top: 50px;
+    .header {
+      text-align: center;
+      h1 {
+        font-weight: bold;
+      }
+      h2 {
+        font-weight: normal;
+      }
+    }
+    .notification {
+      padding-top: 15px;
+    }
+  }
+}

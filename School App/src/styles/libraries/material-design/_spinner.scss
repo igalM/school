@@ -1,0 +1,17 @@
+.mat-progress-spinner svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+mat-spinner {
+  width: 40px !important;
+  height: 40px !important;
+  position: absolute !important;
+  top: 0;
+  right: 10px;
+  opacity: 0;
+}
+
+mat-spinner.show {
+  opacity: 1;
+}

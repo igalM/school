@@ -1,0 +1,23 @@
+<div class="dialog" fxLayout="column">
+    <form [formGroup]="courseForm" fxLayout="column" (ngSubmit)="addCourse()">
+        <div class="input-container">
+            <input-component [name]="'name'" [placeholder]="'Enter course name'" [parentForm]="courseForm">
+            </input-component>
+        </div>
+        <!-- create textarea component!!! -->
+        <div class="input-container">
+            <input-component [name]="'description'" [placeholder]="'Enter course description'"
+                [parentForm]="courseForm">
+            </input-component>
+        </div>
+        <div class="input-container">
+            <input-component [name]="'howManyStudents'" [type]="'number'"
+                [placeholder]="'How many students can sign up'" [parentForm]="courseForm">
+            </input-component>
+        </div>
+        <div class="file-upload-container">
+            <image-upload-component formControlName="image" [title]="'Course'"></image-upload-component>
+        </div>
+        <button type="submit" mat-raised-button [disabled]="!courseForm.valid">Confirm</button>
+    </form>
+</div>

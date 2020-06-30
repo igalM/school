@@ -1,0 +1,11 @@
+<div [formGroup]="parentForm" class="input-component" fxLayout="column">
+    <mat-form-field>
+        <input matInput [type]="type" [placeholder]="placeholder" [formControlName]="name">
+    </mat-form-field>
+    <p class="error-msg"
+        *ngIf="formControl.value !== '' && formControl.errors && (formControl.dirty || formControl.touched)">
+        {{errMsg}}</p>
+    <p class="error-msg"
+        *ngIf="formControl.value === '' && formControl.errors && (formControl.dirty || formControl.touched)">
+        Field is required</p>
+</div>

@@ -1,0 +1,24 @@
+<div class="index-page" fxLayout="column">
+    <div class="content-container" fxLayout="column">
+        <div class="header" fxLayout="column">
+            <h1>Hello World!</h1>
+            <h2>Please login to check our school.</h2>
+        </div>
+        <form fxLayout="column" [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="input-component">
+                <input-component [placeholder]="'Email'" [name]="'email'" [parentForm]="loginForm">
+                </input-component>
+            </div>
+            <div class="input-component">
+                <input-component [placeholder]="'Password'" [type]="'password'" [name]="'password'"
+                    [parentForm]="loginForm">
+                </input-component>
+            </div>
+
+            <button type="submit" mat-raised-button [disabled]="!loginForm.valid">Log in</button>
+            <p class="notification">Not registered yet? <span class="bold" (click)="openDialog()"><u
+                        class="cursor">Click
+                        Here</u></span></p>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="radio-father" [formGroup]="parentForm" fxLayout="column">
+    <h4>{{title}}</h4>
+    <mat-radio-group [formControlName]="name" fxLayout="column">
+        <mat-radio-button *ngFor="let x of array" [value]="x.value">{{x.placeholder}}</mat-radio-button>
+    </mat-radio-group>
+</div>

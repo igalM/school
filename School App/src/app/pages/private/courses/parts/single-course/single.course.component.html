@@ -1,0 +1,6 @@
+<div *ngIf="course" class="course" fxLayout="column">
+    <h3><span class="bold">Name:</span> {{course.name}}</h3>
+    <h3><span class="bold">Students:</span> {{course.students.length}}/{{course.howManyStudents}}</h3>
+    <h3><span class="bold">Teacher:</span> {{course.teacher.name}}</h3>
+    <button mat-raised-button (click)="navigateToCourse()">View Course</button>
+</div>

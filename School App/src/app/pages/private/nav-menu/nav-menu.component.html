@@ -1,0 +1,45 @@
+<div class="navbar">
+    <mat-toolbar color="primary">
+
+        <div class="hamburger-menu" fxShow="true" fxHide.gt-sm="true">
+            <button mat-icon-button (click)="toggleSidenav()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+
+        <div class="navbar-items" fxLayout="row">
+            <div class="logo-container" fxLayout="row">
+                <img class="logo" src="assets/logo.svg">
+                <p>Code School</p>
+            </div>
+            <div class="toggles" fxLayout="column">
+                <div class="toggle-component">
+                    <toggle-component [name]="'theme'" [text]="'Toggle Theme'" (onChangeEmitter)="toggleTheme()">
+                    </toggle-component>
+                </div>
+            </div>
+            <div fxShow="true" fxHide.lt-md="true">
+                <a mat-button (click)="navigateToProfile()">My Profile</a>
+                <a mat-button routerLink="/students">Students</a>
+                <a mat-button routerLink="/teachers">Teachers</a>
+                <a mat-button routerLink="/courses">Courses</a>
+                <a mat-button routerLink="/index" (click)="logout()">Log out</a>
+            </div>
+        </div>
+
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill class="example-container"
+        [ngStyle]="{'z-index': sidenavIndex, 'pointer-events': pointerEvents}">
+        <mat-sidenav position="end" color="primary" #sidenav fxLayout="column" mode="over"
+            (openedStart)="sidenavOpened()" (closed)="sidenavClosed()" opened="false" fxHide.gt-sm="true">
+            <div fxLayout="column">
+                <a mat-button (click)="navigateToProfile()">My Profile</a>
+                <a (click)="toggleSidenav()" mat-button routerLink="/students">Students</a>
+                <a (click)="toggleSidenav()" mat-button routerLink="/teachers">Teachers</a>
+                <a (click)="toggleSidenav()" mat-button routerLink="/courses">Courses</a>
+                <a (click)="toggleSidenav()" mat-button routerLink="/index" (click)="logout()">Log out</a>
+            </div>
+        </mat-sidenav>
+
+    </mat-sidenav-container>
+</div>

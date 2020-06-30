@@ -1,0 +1,17 @@
+<div class="students-page" fxLayout="column">
+
+    <div *ngIf="(students$ | async) as students" class="content-container">
+
+        <div *ngIf="students.length == 0" class="empty">
+            <h2>No students yet in this school :(</h2>
+        </div>
+
+        <div *ngIf="students.length > 0" class="students-block" fxLayout="row">
+            <div class="student-father" *ngFor="let student of students">
+                <single-student-component [student]="student"></single-student-component>
+            </div>
+        </div>
+
+    </div>
+
+</div>

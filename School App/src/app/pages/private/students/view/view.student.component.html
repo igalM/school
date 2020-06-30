@@ -1,0 +1,24 @@
+<div *ngIf="student" class="student-profile-page page" fxLayout="column">
+
+    <div class="personal-info" fxLayout="column">
+        <h2 class="bold"><u>Personal Information</u></h2>
+        <div class="profile-img">
+            <img [src]="student.image" alt="profile-image">
+        </div>
+        <h4><span class="bold">Name:</span> {{student.name}}</h4>
+        <h4><span class="bold">Gender:</span> {{student.gender}}</h4>
+        <h4><span class="bold">Age:</span> {{student.age}}</h4>
+    </div>
+
+    <div class="courses-list" fxLayout="column">
+        <h2 class="bold"><u>What Am I Studying?</u></h2>
+        <h4 *ngIf="student.courses.length == 0">Nothing...</h4>
+        <div *ngIf="student.courses.length > 0">
+            <div class="course" fxLayout="row" *ngFor="let s of student.courses">
+                <div class="circle"></div>
+                <h3 (click)="navigateToCourse(s._id)">{{s.name}}</h3>
+            </div>
+        </div>
+    </div>
+
+</div>

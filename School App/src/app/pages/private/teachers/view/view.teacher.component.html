@@ -1,0 +1,29 @@
+<div *ngIf="teacher" class="teacher-profile-page page" fxLayout="column"
+    [ngClass]="{'padding': user.role === UserRole.Teacher && user?.teacher._id === teacher._id}">
+
+    <div *ngIf="user.role === UserRole.Teacher && user?.teacher._id === teacher._id" class="add-btn">
+        <button mat-raised-button (click)="openDialog()">New Course</button>
+    </div>
+
+    <div class="personal-info" fxLayout="column">
+        <h2 class="bold"><u>Personal Information</u></h2>
+        <div class="profile-img">
+            <img [src]="teacher.image" alt="profile-image">
+        </div>
+        <h4><span class="bold">Name:</span> {{teacher.name}}</h4>
+        <h4><span class="bold">Gender:</span> {{teacher.gender}}</h4>
+        <h4><span class="bold">Age:</span> {{teacher.age}}</h4>
+    </div>
+
+    <div class="courses-list" fxLayout="column">
+        <h2 class="bold"><u>What Am I Teaching?</u></h2>
+        <h4 *ngIf="teacher.courses.length == 0">Nothing...</h4>
+        <div *ngIf="teacher.courses.length > 0">
+            <div class="course" fxLayout="row" *ngFor="let c of teacher.courses">
+                <div class="circle"></div>
+                <h3 (click)="navigateToCourse(c._id)">{{c.name}}</h3>
+            </div>
+        </div>
+    </div>
+
+</div>

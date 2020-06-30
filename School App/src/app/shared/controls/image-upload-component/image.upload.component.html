@@ -1,0 +1,13 @@
+<div class="file-upload-component" fxLayout="column">
+    <input hidden id="file" type="file">
+    <label *ngIf="!file && !loadingImage" for="file" class="mat-raised-button mat-button-base mat-primary">Upload
+        {{title}}
+        Picture</label>
+    <label *ngIf="loadingImage" for="file" class="mat-raised-button mat-button-base mat-primary">
+        <img class="loader" src="assets/upload-loader.svg">
+    </label>
+    <label *ngIf="file && !loadingImage" for="file" class="mat-raised-button mat-button-base mat-primary">Change
+        {{title}}
+        Picture</label>
+    <p class="err-msg" *ngIf="!fileValidated">Please upload only jpg files under 4MB</p>
+</div>

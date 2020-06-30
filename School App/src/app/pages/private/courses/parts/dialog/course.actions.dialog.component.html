@@ -1,0 +1,7 @@
+<div class="dialog" fxLayout="column">
+    <h2 class="bold">Are you sure you want to {{data.action}} this course?</h2>
+    <div class="actions" fxLayout="row">
+        <button mat-raised-button (click)="dialogRef.close(true)">Yes</button>
+        <button mat-raised-button (click)="dialogRef.close()">No</button>
+    </div>
+</div>

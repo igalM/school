@@ -1,0 +1,17 @@
+<div class="teachers-page" fxLayout="column">
+
+    <div *ngIf="(teachers$ | async) as teachers" class="content-container">
+
+        <div *ngIf="teachers.length == 0" class="empty">
+            <h2>No teachers yet in this school :(</h2>
+        </div>
+
+        <div *ngIf="teachers.length > 0" class="teachers-block" fxLayout="row">
+            <div class="teacher-father" *ngFor="let teacher of teachers">
+                <single-teacher-component [teacher]="teacher"></single-teacher-component>
+            </div>
+        </div>
+
+    </div>
+
+</div>

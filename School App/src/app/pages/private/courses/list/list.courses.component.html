@@ -1,0 +1,17 @@
+<div class="courses-page" fxLayout="column">
+
+    <div *ngIf="(courses$ | async) as courses" class="content-container">
+
+        <div *ngIf="courses.length == 0" class="empty">
+            <h2>No courses yet in this school :(</h2>
+        </div>
+
+        <div *ngIf="courses.length > 0" class="courses-block" fxLayout="row">
+            <div class="course-father" *ngFor="let course of courses">
+                <single-course-component [course]="course"></single-course-component>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,6 @@
+<div *ngIf="student" class="student" fxLayout="column">
+    <h3><span class="bold">Name:</span> {{student.name}}</h3>
+    <h3><span class="bold">Gender:</span> {{student.gender}}</h3>
+    <h3><span class="bold">Age:</span> {{student.age}}</h3>
+    <button mat-raised-button (click)="navigateToProfile()">View Student</button>
+</div>

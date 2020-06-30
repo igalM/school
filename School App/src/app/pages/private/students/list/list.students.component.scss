@@ -1,0 +1,23 @@
+.students-page {
+  height: 100%;
+  .content-container {
+    .empty {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .students-block {
+      flex-wrap: wrap;
+      .student-father {
+        width: 200px;
+        padding: 15px;
+        box-shadow: 1px 1px 7px 2px #d2d1d1;
+        margin: 15px;
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    .content-container .students-block .student-father {
+      width: 100%;
+    }
+  }
+}
