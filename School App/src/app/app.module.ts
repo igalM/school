@@ -48,7 +48,7 @@ const effects = [
     components
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     CoreModule,
     AppRoutingModule,

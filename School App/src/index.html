@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Schools</title>
@@ -8,8 +9,19 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script>
+    const observer = new PerformanceObserver((list) => {
+      for (const entry of list.getEntriesByName('first-contentful-paint')) {
+        console.log('FCP:', entry.startTime);
+        observer.disconnect();
+      }
+    });
+    observer.observe({ type: 'paint', buffered: true });
+  </script>
 </head>
+
 <body class="mat-typography">
   <app-root></app-root>
 </body>
+
 </html>

@@ -1,7 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Inject, Injectable, PLATFORM_ID } from "@angular/core";
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../store/index';
 import { logoutUser } from 'src/store/actions/user.actions';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class StorageService {
@@ -9,7 +10,8 @@ export class StorageService {
     public key: string = 'USER';
 
     constructor(
-        private readonly store: Store<fromApp.AppState>
+        private readonly store: Store<fromApp.AppState>,
+        @Inject(PLATFORM_ID) private readonly platformId: Object
     ) { }
 
     public set(user: any) {
@@ -22,16 +24,22 @@ export class StorageService {
     }
 
     public getAsString(key: string): any {
-        var item = window.localStorage.getItem(key);
-        return item ? item : null;
+        if (isPlatformBrowser(this.platformId)) {
+            var item = window.localStorage.getItem(key);
+            return item ? item : null;
+        }
     }
 
     public setAsString(key: string, value: string) {
-        window.localStorage.setItem(key, value);
+        if (isPlatformBrowser(this.platformId)) {
+            window.localStorage.setItem(key, value);
+        }
     }
 
     public delete() {
-        window.localStorage.removeItem(this.key);
-        this.store.dispatch(logoutUser());
+        if (isPlatformBrowser(this.platformId)) {
+            window.localStorage.removeItem(this.key);
+            this.store.dispatch(logoutUser());
+        }
     }
 }
