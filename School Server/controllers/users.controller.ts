@@ -29,7 +29,6 @@ export class UserController {
             savedStudent: StudentDocument, savedTeacher: TeacherDocument;
         [err, emailExists] = await handle(this.userRepository.findOne(body.email));
         if (emailExists) throw new Error('Email is already registered! Please login!');
-        if (err) throw new Error(err.message);
         const user: User = {
             email: body.email,
             role: body.role,
