@@ -12,32 +12,24 @@ export class UserEffects {
     signupUser$ = createEffect(() =>
         this.actions$.pipe(
             ofType(UserActions.signupUser),
-            switchMap(({ user }) => this.usersService.signup(user).pipe(
-                map(user => UserActions.loginUser({ user: user })),
-                catchError(() => of(UserActions.signupUserFailure()))
-            )
-            )
-        )
-    );
+            switchMap(({ user }) => this.usersService.signup(user)),
+            map(user => UserActions.loginUser({ user: user })),
+            catchError(() => of(UserActions.signupUserFailure()))));
 
     loginUser$ = createEffect(() =>
         this.actions$.pipe(
             ofType(UserActions.loginUser),
-            switchMap(({ user }) => this.usersService.login(user).pipe(
-                map(user => {
-                    const storageData = {
-                        email: user.email,
-                        role: user.role,
-                        token: user.token
-                    }
-                    this.storageService.set(storageData);
-                    return UserActions.loginUserSuccess({ user: user });
-                }),
-                catchError(() => of(UserActions.loginUserFailure()))
-            )
-            )
-        )
-    )
+            switchMap(({ user }) => this.usersService.login(user)),
+            map(user => {
+                const storageData = {
+                    email: user.email,
+                    role: user.role,
+                    token: user.token
+                }
+                this.storageService.set(storageData);
+                return UserActions.loginUserSuccess({ user: user });
+            }),
+            catchError(() => of(UserActions.loginUserFailure()))));
 
     constructor(
         private readonly actions$: Actions,

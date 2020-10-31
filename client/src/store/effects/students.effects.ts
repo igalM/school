@@ -10,12 +10,8 @@ export class StudentEffects {
     getStudents$ = createEffect(() =>
         this.actions$.pipe(
             ofType(StudentActions.fetchStudents),
-            switchMap(() => this.studentsService.get().pipe(
-                map(students => StudentActions.fetchStudentsSuccess({ students: students }))
-            )
-            )
-        )
-    );
+            switchMap(() => this.studentsService.get()),
+            map(students => StudentActions.fetchStudentsSuccess({ students: students }))));
 
     constructor(
         private readonly actions$: Actions,

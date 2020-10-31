@@ -10,12 +10,8 @@ export class TeacherEffects {
     getTeachers$ = createEffect(() =>
         this.actions$.pipe(
             ofType(TeacherActions.fetchTeachers),
-            switchMap(() => this.teachersService.get().pipe(
-                map(teachers => TeacherActions.fetchTeachersSuccess({ teachers: teachers }))
-            )
-            )
-        )
-    );
+            switchMap(() => this.teachersService.get()),
+            map(teachers => TeacherActions.fetchTeachersSuccess({ teachers: teachers }))));
 
     constructor(
         private readonly actions$: Actions,
